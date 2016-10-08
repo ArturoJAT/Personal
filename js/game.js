@@ -15,14 +15,23 @@ $(function () {
   var FPS = 60;
 
   var returnFlag = 0;
+  var transitionLeft = false;
+
   setInterval(function () {
     if (returnFlag === 0) {
       update();
     } else if (currentCanvas == 1) {
       loadCanvas2();
     } else if (currentCanvas == 2) {
-      loadCanvas1();
+      if (transitionLeft == true) {
+        loadCanvas1();
+      } else {
+        loadCanvas3();
+      }
+    } else if (currentCanvas == 3) {
+      loadCanvas2Left();
     }
+
     draw();
   }, 1000 / FPS);
   var left = false;
@@ -66,13 +75,32 @@ $(function () {
     if (player.x < 0) {
       player.x = 0;
     }
+
+    if (player.x >= CANVAS_WIDTH / 2 && currentCanvas == 3) {
+      player.x = (CANVAS_WIDTH / 2);
+
+    }
     if (player.x >= (CANVAS_WIDTH - (CANVAS_WIDTH / 20)) && currentCanvas == 1) {
       returnFlag = 1;
     }
     if (player.x < ((CANVAS_WIDTH / 20) - 50) && currentCanvas == 2) {
+      transitionLeft = true;
+      console.log(transitionLeft);
+      console.log("75");
+      returnFlag = 1;
+
+    }
+    if (player.x >= (CANVAS_WIDTH - (CANVAS_WIDTH / 20)) && currentCanvas == 2) {
+      transitionLeft = false;
       returnFlag = 1;
     }
+    if (player.x < ((CANVAS_WIDTH / 20) - 50) && currentCanvas == 3) {
+      transitionLeft = true;
+      console.log(transitionLeft);
+      console.log("75");
+      returnFlag = 1;
 
+    }
   }
   var player = {
     x: CANVAS_WIDTH / 2,
@@ -103,13 +131,15 @@ $(function () {
   var tree1 = {
     x: CANVAS_WIDTH / 4,
     y: 4,
-    width: 132,
-    height: 400,
+    width: 166,
+    height: 202,
     sprite: Sprite("tree1"),
     draw: function () {
       this.sprite.draw(canvas, this.x, this.y);
     }
   };
+
+
 
   function draw() {
     drawCanvas();
@@ -147,7 +177,7 @@ $(function () {
       $('#personal').fadeTo(1, boxAlpha);
       boxAlpha--;
     } else {
-      $('#personal').html("Tengo conocimientos en <br>HTML<br>CSS<br>JavaScript<br>Java");
+      $('#personal').html("<b>Tengo conocimientos en :</b> <br>HTML<br>CSS<br>JavaScript,JQuery,SQL,<br>Java,C, y Python.");
       $('#personal').fadeTo(100, 1)
       boxAlpha = 1;
       returnFlag = 0;
@@ -158,6 +188,7 @@ $(function () {
     if (player.x < CANVAS_WIDTH - (CANVAS_WIDTH / 20) - 50) {
       player.x += 50;
       tree1.x += 50;
+
       $('#personal').fadeTo(1, boxAlpha);
       boxAlpha--;
     } else {
@@ -168,8 +199,40 @@ $(function () {
       currentCanvas = 1;
     }
   }
+  function loadCanvas3() {
+    if (player.x > CANVAS_WIDTH / 20) {
+      player.x -= 50;
+      tree1.x -= 50;
 
+      $('#personal').fadeTo(1, boxAlpha);
+      boxAlpha--;
+    } else {
+      $('#personal').css("bottom", '45%');
 
+      $('#personal').html("Contáctame");
+      $('#personal').fadeTo(100, 1)
+      boxAlpha = 1;
+      returnFlag = 0;
+      currentCanvas = 3;
+    }
+
+  }
+  function loadCanvas2Left() {
+    if (player.x < CANVAS_WIDTH - (CANVAS_WIDTH / 20) - 50) {
+      player.x += 50;
+      tree1.x += 50;
+
+      $('#personal').fadeTo(1, boxAlpha);
+      boxAlpha--;
+    } else {
+      $('#personal').css("bottom", '65%');
+      $('#personal').html("<b>Tengo conocimientos en :</b> <br>HTML<br>CSS<br>JavaScript,JQuery,SQL,<br>Java,C, y Python.");
+      $('#personal').fadeTo(100, 1)
+      boxAlpha = 1;
+      returnFlag = 0;
+      currentCanvas = 2;
+    }
+  }
   $(window).resize(respondCanvas);
 });
 //]]>
