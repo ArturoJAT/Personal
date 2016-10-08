@@ -147,7 +147,7 @@ $(function () {
       $('#personal').fadeTo(1, boxAlpha);
       boxAlpha--;
     } else {
-      $('#personal').html("Tengo conociminetos en <br>HTML<br>CSS<br>JavaScript<br>Java");
+      $('#personal').html("Tengo conocimientos en <br>HTML<br>CSS<br>JavaScript<br>Java");
       $('#personal').fadeTo(100, 1)
       boxAlpha = 1;
       returnFlag = 0;
