@@ -4,6 +4,7 @@ $(function () {
     "<span><i class=\"fa fa-arrow-right\" aria-hidden=\"true\"></i></span>" +
     "<br><div><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i><b> Izquierda </b> y <i class=\"fa fa-arrow-right\" aria-hidden=\"true\"></i><b> Derecha</b> para Moverte.</div>";
 
+
   var currentCanvas = 1;
   var CANVAS_WIDTH = $('#main').width();
   var CANVAS_HEIGHT = 300;
