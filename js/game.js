@@ -217,6 +217,7 @@ $(function () {
     }
 
   }
+  
   function loadCanvas2Left() {
     if (player.x < CANVAS_WIDTH - (CANVAS_WIDTH / 20) - 50) {
       player.x += 50;
