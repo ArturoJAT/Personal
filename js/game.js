@@ -177,7 +177,7 @@ $(function () {
       $('#personal').fadeTo(1, boxAlpha);
       boxAlpha--;
     } else {
-      $('#personal').html("<b>Tengo conocimientos en :</b> <br>HTML<br>CSS<br>JavaScript,JQuery,SQL,<br>Java,C, y Python.");
+      $('#personal').html("<b>Tengo conocimientos en :</b> <br>HTML,<br>CSS,Photoshop,<br>JavaScript,JQuery,SQL,<br>Java,C, y Python.");
       $('#personal').fadeTo(100, 1)
       boxAlpha = 1;
       returnFlag = 0;
@@ -217,6 +217,7 @@ $(function () {
     }
 
   }
+  
   function loadCanvas2Left() {
     if (player.x < CANVAS_WIDTH - (CANVAS_WIDTH / 20) - 50) {
       player.x += 50;
@@ -226,7 +227,7 @@ $(function () {
       boxAlpha--;
     } else {
       $('#personal').css("bottom", '65%');
-      $('#personal').html("<b>Tengo manejo :</b> <br>HTML<br>CSS,Photoshop,<br>JavaScript,JQuery,SQL,<br>Java,C, y Python.");
+      $('#personal').html("<b>Tengo manejo :</b> <br>HTML,<br>CSS,Photoshop,<br>JavaScript,JQuery,SQL,<br>Java,C, y Python.");
       $('#personal').fadeTo(100, 1)
       boxAlpha = 1;
       returnFlag = 0;
