@@ -1,13 +1,13 @@
 //<![CDATA[ 
 $(function () {
-  var text1 = "Hola me llamo <b>Arturo Alvarado</b>, y soy un Desarrolador de 20 años que vive en la Ciudad de México, Bienvenido a mi currículum interactivo." +
+  var text1 = "Hola me llamo <b>Arturo Alvarado</b>, soy un Desarrolador de 20 años que vive en la Ciudad de México, Bienvenido a mi currículum interactivo." +
     "<span><i class=\"fa fa-arrow-right\" aria-hidden=\"true\"></i></span>" +
     "<br><div><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i><b> Izquierda </b> y <i class=\"fa fa-arrow-right\" aria-hidden=\"true\"></i><b> Derecha</b> para Moverte.</div>";
 
-
+  var text2="<b>Tengo experiencia en :</b> <br>HTML,<br>CSS, Photoshop,<br>JavaScript, JQuery, SQL,<br>Java, C y Python.";
   var currentCanvas = 1;
   var CANVAS_WIDTH = $('#main').width();
-  var CANVAS_HEIGHT = 300;
+  var CANVAS_HEIGHT = $('#main').height();
   var boxAlpha = 1;
   var canvasElement = $('canvas');
   var canvas = canvasElement.get(0).getContext("2d");
@@ -177,7 +177,7 @@ $(function () {
       $('#personal').fadeTo(1, boxAlpha);
       boxAlpha--;
     } else {
-      $('#personal').html("<b>Tengo conocimientos en :</b> <br>HTML,<br>CSS,Photoshop,<br>JavaScript,JQuery,SQL,<br>Java,C, y Python.");
+      $('#personal').html(text2);
       $('#personal').fadeTo(100, 1)
       boxAlpha = 1;
       returnFlag = 0;
@@ -217,7 +217,7 @@ $(function () {
     }
 
   }
-  
+
   function loadCanvas2Left() {
     if (player.x < CANVAS_WIDTH - (CANVAS_WIDTH / 20) - 50) {
       player.x += 50;
@@ -227,13 +227,14 @@ $(function () {
       boxAlpha--;
     } else {
       $('#personal').css("bottom", '65%');
-      $('#personal').html("<b>Tengo manejo :</b> <br>HTML,<br>CSS,Photoshop,<br>JavaScript,JQuery,SQL,<br>Java,C, y Python.");
+      $('#personal').html(text2);
       $('#personal').fadeTo(100, 1)
       boxAlpha = 1;
       returnFlag = 0;
       currentCanvas = 2;
     }
   }
-  $(window).resize(respondCanvas);
+  $(window).resize(draw);
+
 });
 //]]>
