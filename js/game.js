@@ -34,6 +34,8 @@ $(function () {
 
     draw();
   }, 1000 / FPS);
+
+
   var left = false;
   var catepos = 0;
   var frameCount = 0;
@@ -104,9 +106,9 @@ $(function () {
 
   function Player() {
     this.x = CANVAS_WIDTH / 2;
-    this.y = 173;
-    this.width = 64;
-    this.height = 32;
+    this.y = 167; 
+    this.width = 100;
+    this.height = 40;
     this.spriteRight1 = new Image();
     this.spriteRight1.src = "images/cate1.png";
 
@@ -141,7 +143,7 @@ $(function () {
       }
 
     };
-  }
+  };
   var player = new Player();
 
   function Tree1() {
@@ -259,10 +261,5 @@ $(function () {
 
     }
   }
-
-
-
-
-
 });
 
