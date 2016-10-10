@@ -1,10 +1,10 @@
-//<![CDATA[ 
+
 $(function () {
   var text1 = "Hola me llamo <b>Arturo Alvarado</b>, soy un Desarrolador de 20 años que vive en la Ciudad de México, Bienvenido a mi currículum interactivo." +
     "<span><i class=\"fa fa-arrow-right\" aria-hidden=\"true\"></i></span>" +
     "<br><div><i class=\"fa fa-arrow-left\" aria-hidden=\"true\"></i><b> Izquierda </b> y <i class=\"fa fa-arrow-right\" aria-hidden=\"true\"></i><b> Derecha</b> para Moverte.</div>";
 
-  var text2="<b>Tengo experiencia en :</b> <br>HTML,<br>CSS, Photoshop,<br>JavaScript, JQuery, SQL,<br>Java, C y Python.";
+  var text2 = "<b>Tengo experiencia en :</b> <br>HTML,<br>CSS, Photoshop,<br>JavaScript, JQuery, SQL,<br>Java, C y Python.";
   var currentCanvas = 1;
   var CANVAS_WIDTH = $('#main').width();
   var CANVAS_HEIGHT = $('#main').height();
@@ -85,8 +85,7 @@ $(function () {
     }
     if (player.x < ((CANVAS_WIDTH / 20) - 50) && currentCanvas == 2) {
       transitionLeft = true;
-      console.log(transitionLeft);
-      console.log("75");
+
       returnFlag = 1;
 
     }
@@ -96,48 +95,67 @@ $(function () {
     }
     if (player.x < ((CANVAS_WIDTH / 20) - 50) && currentCanvas == 3) {
       transitionLeft = true;
-      console.log(transitionLeft);
-      console.log("75");
+
       returnFlag = 1;
 
     }
   }
-  var player = {
-    x: CANVAS_WIDTH / 2,
-    y: 173,
-    width: 32,
-    height: 32,
-    spriteRight1: Sprite("cate1"),
-    spriteRight2: Sprite("cate2"),
-    spriteLeft1: Sprite("cate3"),
-    spriteLeft2: Sprite("cate4"),
-    draw: function () {
+
+
+  function Player() {
+    this.x = CANVAS_WIDTH / 2;
+    this.y = 173;
+    this.width = 64;
+    this.height = 32;
+    this.spriteRight1 = new Image();
+    this.spriteRight1.src = "images/cate1.png";
+
+    this.spriteRight2 = new Image();
+    this.spriteRight2.src = "images/cate2.png";
+
+    this.spriteLeft1 = new Image();
+    this.spriteLeft1.src = "images/cate3.png";
+
+    this.spriteLeft2 = new Image();
+    this.spriteLeft2.src = "images/cate4.png";
+
+    this.draw = function () {
       if (!left) {
         if (catepos == 1) {
-          this.spriteRight1.draw(canvas, this.x, this.y);
+
+          canvas.drawImage(this.spriteRight1, this.x, this.y, this.width, this.height);
+
         } else if (catepos == 0) {
-          this.spriteRight2.draw(canvas, this.x, this.y);
+
+          canvas.drawImage(this.spriteRight2, this.x, this.y, this.width, this.height)
+
         }
       } else {
         if (catepos == 1) {
-          this.spriteLeft1.draw(canvas, this.x, this.y);
+          canvas.drawImage(this.spriteLeft1, this.x, this.y, this.width, this.height);
+
         } else if (catepos == 0) {
-          this.spriteLeft2.draw(canvas, this.x, this.y);
+          canvas.drawImage(this.spriteLeft2, this.x, this.y, this.width, this.height);
+
         }
       }
-    }
-  };
 
-  var tree1 = {
-    x: CANVAS_WIDTH / 4,
-    y: 4,
-    width: 166,
-    height: 202,
-    sprite: Sprite("tree1"),
-    draw: function () {
-      this.sprite.draw(canvas, this.x, this.y);
-    }
-  };
+    };
+  }
+  var player = new Player();
+
+  function Tree1() {
+    this.x = CANVAS_WIDTH / 4;
+    this.y = 4;
+    this.width = 166;
+    this.height = 202;
+    this.sprite = new Image();
+    this.sprite.src = "images/tree1.png";
+    this.draw = function () {
+      canvas.drawImage(this.sprite, this.x, this.y, this.width, this.height);
+    };
+  }
+  var tree1 = new Tree1();
 
 
 
@@ -182,6 +200,7 @@ $(function () {
       boxAlpha = 1;
       returnFlag = 0;
       currentCanvas = 2;
+      $('.scroll-left').css("visibility", 'visible');
     }
   }
   function loadCanvas1() {
@@ -197,6 +216,8 @@ $(function () {
       boxAlpha = 1;
       returnFlag = 0;
       currentCanvas = 1;
+      $('.scroll-left').css("visibility", 'hidden');
+
     }
   }
   function loadCanvas3() {
@@ -214,6 +235,8 @@ $(function () {
       boxAlpha = 1;
       returnFlag = 0;
       currentCanvas = 3;
+      $('.scroll-right').css("visibility", 'hidden');
+
     }
 
   }
@@ -232,9 +255,14 @@ $(function () {
       boxAlpha = 1;
       returnFlag = 0;
       currentCanvas = 2;
+      $('.scroll-right').css("visibility", 'visible');
+
     }
   }
-  $(window).resize(draw);
+
+
+
+
 
 });
-//]]>
+

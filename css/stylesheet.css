@@ -60,3 +60,18 @@ canvas {
     z-index:0;
 
 }
+.scroll-right{ 
+  position: fixed;
+  z-index: 999;
+  bottom: 2em;
+  right: 2em;
+  font-size: 20px;
+  }
+  .scroll-left{ 
+  position: fixed;
+  z-index: 999;
+  bottom: 2em;
+  left: 2em;
+  font-size: 20px;
+  visibility: hidden;
+  }
